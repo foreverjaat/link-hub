@@ -10,7 +10,7 @@ const PORT = process.env.PORT ;
 
 
 app.use(helmet());
-app.use(cors({ origin:  "https://link-hub-snowy.vercel.app/" }));
+app.use(cors({ origin:  "https://link-hub-z0n5.onrender.com" }));
 app.use(express.json());
 app.use(morgan("dev"));
 
