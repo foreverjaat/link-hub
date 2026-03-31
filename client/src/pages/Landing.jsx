@@ -210,7 +210,7 @@ function MockProfile() {
         >
           👤
         </div>
-        <div style={{ fontWeight: 800, fontSize: 18 }}>@yourname</div>
+        <div style={{ fontWeight: 800, fontSize: 18 }}>@username</div>
         <div style={{ color: "var(--color-text-muted)", fontSize: 13, marginTop: 4 }}>
           Creator · Developer · Your bio here
         </div>
@@ -237,7 +237,7 @@ function MockProfile() {
         ))}
       </div>
       <div style={{ textAlign: "center", marginTop: 20, fontSize: 12, color: "#9ca3af" }}>
-        linkhub.app/u/yourname
+        linkhub/@username
       </div>
     </div>
   );
