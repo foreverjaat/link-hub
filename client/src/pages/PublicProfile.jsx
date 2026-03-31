@@ -173,7 +173,7 @@ export default function PublicProfile() {
 
         {/* Footer */}
         <div className="profile-powered">
-          Made with <Link to="/">🔗 LinkHub</Link>
+          Made with <Link to="https://link-hub-z0n5.onrender.com">🔗 LinkHub</Link>
         </div>
       </div>
     </div>
