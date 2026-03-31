@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import api from "../api/axios";
 
-//  ADD ICON IMPORTS
+//   ICON IMPORTS
 import {
   FaInstagram,
   FaYoutube,
@@ -49,12 +49,12 @@ export default function PublicProfile() {
   }, [username]);
 
   const handleLinkClick = async (link) => {
-    // Track the click silently in background, then redirect
+    // Track the click , then redirect
     api.post(`/links/${link.id}/click`).catch(() => {});
     window.open(link.url, "_blank", "noreferrer");
   };
 
-  // ── Loading ──────────────────────────────────────────────
+  
   if (loading) {
     return (
       <div className="spinner-wrap" style={{ minHeight: "100vh" }}>
@@ -63,7 +63,7 @@ export default function PublicProfile() {
     );
   }
 
-  // ── 404 ──────────────────────────────────────────────────
+ 
   if (notFound) {
     return (
       <div
@@ -96,6 +96,38 @@ export default function PublicProfile() {
     <div className="profile-page">
       <div className="profile-container">
 
+      {/* Header */}
+        <div className="profile-header">
+  {profile.avatarUrl ? (
+    <img
+      src={profile.avatarUrl}
+      alt={profile.displayName || profile.username}
+      className="profile-avatar"
+    />
+  ) : (
+    <div className="profile-avatar">{initials}</div>
+  )}
+
+  {/* Full Name OR Username */}
+  <h1 className="profile-name">
+    {profile.displayName || profile.username}
+  </h1>
+
+  {/* Username (always once) */}
+  {profile.displayName && (
+    <p className="profile-username">
+      @{profile.username}
+    </p>
+  )}
+
+  {/* Bio */}
+  {profile.bio && (
+    <p className="profile-bio">
+      {profile.bio}
+    </p>
+  )}
+</div>
+        
         {/* Links */}
         {profile.links.length === 0 ? (
           <div style={{ textAlign: "center", color: "var(--color-text-muted)", padding: "40px 0" }}>
@@ -116,6 +148,25 @@ export default function PublicProfile() {
                 <span style={{ color: "var(--color-text-muted)", fontSize: 18 }}>↗</span>
               </button>
             ))}
+          </div>
+        )}
+
+        {/*  Social Icons Row */}
+        {profile.links.length > 0 && (
+          <div className="social-icons">
+            {profile.links
+              .filter(link =>
+                ["instagram", "twitter", "youtube", "facebook", "linkedin", "github"].includes(link.icon)
+              )
+              .map(link => (
+                <button
+                  key={link.id}
+                  className="social-icon-btn"
+                  onClick={() => handleLinkClick(link)}
+                >
+                  {ICONS[link.icon]}
+                </button>
+              ))}
           </div>
         )}
 
