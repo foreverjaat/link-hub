@@ -433,7 +433,7 @@ input:checked + .toggle-slider:before { transform: translateX(18px); }
   width: 100%;
   padding: 14px 16px;
   border-radius: 14px;
-  background: rgb(185, 180, 180);
+  background: rgb(230, 228, 228);
   color: black;
   border: none;
   cursor: pointer;
@@ -444,7 +444,7 @@ input:checked + .toggle-slider:before { transform: translateX(18px); }
 /* Hover */
 .profile-link-btn:hover {
   transform: scale(1.04);
-  background: rgb(185, 180, 180);
+  background: rgb(230, 228, 228);
 }
 
 /* Footer */
