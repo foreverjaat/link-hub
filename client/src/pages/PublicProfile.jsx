@@ -52,7 +52,7 @@ export default function PublicProfile() {
     window.open(link.url, "_blank", "noreferrer");
   };
 
-  // ✅ FIX: define initials safely
+  
   const initials = (profile?.displayName || profile?.username || "U")
     .charAt(0)
     .toUpperCase();
