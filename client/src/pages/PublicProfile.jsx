@@ -90,32 +90,11 @@ export default function PublicProfile() {
     );
   }
 
-  // ── Avatar: image or initial ──────────────────────────────
-  const initials = (profile.displayName || profile.username)
-    .charAt(0)
-    .toUpperCase();
+  
 
   return (
     <div className="profile-page">
       <div className="profile-container">
-
-        {/* Header */}
-        <div className="profile-header">
-          {profile.avatarUrl ? (
-            <img
-              src={profile.avatarUrl}
-              alt={profile.displayName}
-              className="profile-avatar"
-            />
-          ) : (
-            <div className="profile-avatar">{initials}</div>
-          )}
-          <h1 className="profile-name">{profile.displayName || profile.username}</h1>
-          <p style={{ color: "var(--color-text-muted)", fontSize: 13 }}>@{profile.username}</p>
-          {profile.bio && (
-            <p className="profile-bio" style={{ marginTop: 10 }}>{profile.bio}</p>
-          )}
-        </div>
 
         {/* Links */}
         {profile.links.length === 0 ? (
