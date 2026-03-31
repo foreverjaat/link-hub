@@ -31,7 +31,7 @@ const features = [
 const howItWorks = [
   { step: "1", title: "Create your account", desc: "Sign up free with your email and pick a username." },
   { step: "2", title: "Add your links", desc: "Add any links — Instagram, YouTube, portfolio, anything." },
-  { step: "3", title: "Share your page", desc: "Share linkhub.app/u/yourname and you're done." },
+  { step: "3", title: "Share your page", desc: "Share linkhub/@username and you're done." },
 ];
 
 export default function Landing() {
