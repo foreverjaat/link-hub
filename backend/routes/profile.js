@@ -18,7 +18,7 @@ router.get("/:username", async (req, res, next) => {
       success: true,
       profile: {
         username: user.username,
-        displayName: user.displayName || user.username,
+        displayName: user.fullName,
         bio: user.bio,
         avatarUrl: user.avatarUrl,
         theme: user.theme,
