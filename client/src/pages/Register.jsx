@@ -36,8 +36,8 @@ export default function Register() {
       <div className="auth-card card">
         <div className="auth-header">
           <div style={{ fontSize: 36, marginBottom: 8 }}>🔗</div>
-          <h2>Create your LinkHub</h2>
-          <p>Free forever. No credit card needed.</p>
+          <h2>LinkHub</h2>
+          <p>Create your account free</p>
         </div>
 
         <form onSubmit={handleSubmit}>
