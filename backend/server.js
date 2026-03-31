@@ -10,7 +10,7 @@ const PORT = process.env.PORT ;
 
 
 app.use(helmet());
-app.use(cors({ origin: process.env.CLIENT_URL || "http://localhost:5173" }));
+app.use(cors({ origin:  "https://link-hub-snowy.vercel.app/" }));
 app.use(express.json());
 app.use(morgan("dev"));
 
