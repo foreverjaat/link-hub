@@ -24,12 +24,12 @@ export default function App() {
     );
   }
 
-  // 👇 Check if it's public profile page
+ 
   const isPublicPage = location.pathname.startsWith("/u/");
 
   return (
     <>
-      {/* 👇 Hide Navbar on public page */}
+      
       {!isPublicPage && <Navbar />}
 
       <Routes>
