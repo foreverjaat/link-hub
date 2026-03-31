@@ -172,7 +172,7 @@ export default function Dashboard() {
         <div className="public-link-box">
           <span>🌐 Your public page:</span>
           <a href={`/u/${user?.username}`} target="_blank" rel="noreferrer">
-            linkhub.app/u/{user?.username}
+            linkhub/@{user?.username}
           </a>
           <button
             className="btn btn-ghost btn-sm"
