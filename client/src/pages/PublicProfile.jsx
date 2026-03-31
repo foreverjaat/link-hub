@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import api from "../api/axios";
 
-//   ICON IMPORTS
+// ICON IMPORTS
 import {
   FaInstagram,
   FaYoutube,
@@ -17,8 +17,7 @@ import {
   FaEnvelope
 } from "react-icons/fa";
 
-
-//  ICON MAP
+// ICON MAP
 const ICONS = {
   website: <FaGlobe />,
   instagram: <FaInstagram />,
@@ -49,12 +48,16 @@ export default function PublicProfile() {
   }, [username]);
 
   const handleLinkClick = async (link) => {
-    // Track the click , then redirect
     api.post(`/links/${link.id}/click`).catch(() => {});
     window.open(link.url, "_blank", "noreferrer");
   };
 
-  
+  // ✅ FIX: define initials safely
+  const initials = (profile?.displayName || profile?.username || "U")
+    .charAt(0)
+    .toUpperCase();
+
+  // LOADING
   if (loading) {
     return (
       <div className="spinner-wrap" style={{ minHeight: "100vh" }}>
@@ -63,7 +66,7 @@ export default function PublicProfile() {
     );
   }
 
- 
+  // 404
   if (notFound) {
     return (
       <div
@@ -90,60 +93,58 @@ export default function PublicProfile() {
     );
   }
 
-  
-
   return (
     <div className="profile-page">
       <div className="profile-container">
 
-      {/* Header */}
+        {/* HEADER (Clean UI as you wanted) */}
         <div className="profile-header">
-  {profile.avatarUrl ? (
-    <img
-      src={profile.avatarUrl}
-      alt={profile.displayName || profile.username}
-      className="profile-avatar"
-    />
-  ) : (
-    <div className="profile-avatar">{initials}</div>
-  )}
 
-  {/* Full Name OR Username */}
-  <h1 className="profile-name">
-    {profile.displayName || profile.username}
-  </h1>
+          {/* Avatar */}
+          {profile?.avatarUrl ? (
+            <img
+              src={profile.avatarUrl}
+              alt={profile.displayName || profile.username}
+              className="profile-avatar"
+            />
+          ) : (
+            <div className="profile-avatar">{initials}</div>
+          )}
 
-  {/* Username (always once) */}
-  {profile.displayName && (
-    <p className="profile-username">
-      @{profile.username}
-    </p>
-  )}
+          {/* Full Name */}
+          <h1 className="profile-name">
+            {profile?.displayName || "No Name"}
+          </h1>
 
-  {/* Bio */}
-  {profile.bio && (
-    <p className="profile-bio">
-      {profile.bio}
-    </p>
-  )}
-</div>
-        
+          {/* Username */}
+          <p className="profile-username">
+            @{profile?.username}
+          </p>
+
+          {/* Bio */}
+          {profile?.bio && (
+            <p className="profile-bio">
+              {profile.bio}
+            </p>
+          )}
+        </div>
+
         {/* Links */}
-        {profile.links.length === 0 ? (
+        {profile?.links?.length === 0 ? (
           <div style={{ textAlign: "center", color: "var(--color-text-muted)", padding: "40px 0" }}>
             <p>No links added yet.</p>
           </div>
         ) : (
           <div className="profile-links">
-            {profile.links.map((link) => (
+            {profile?.links?.map((link) => (
               <button
                 key={link.id}
                 className="profile-link-btn"
                 onClick={() => handleLinkClick(link)}
               >
                 <span style={{ fontSize: 22 }}>
-                                  {ICONS[link.icon] || <FaGlobe />}
-                                </span>
+                  {ICONS[link.icon] || <FaGlobe />}
+                </span>
                 <span style={{ flex: 1 }}>{link.title}</span>
                 <span style={{ color: "var(--color-text-muted)", fontSize: 18 }}>↗</span>
               </button>
@@ -151,8 +152,8 @@ export default function PublicProfile() {
           </div>
         )}
 
-        {/*  Social Icons Row */}
-        {profile.links.length > 0 && (
+        {/* Social Icons */}
+        {profile?.links?.length > 0 && (
           <div className="social-icons">
             {profile.links
               .filter(link =>
@@ -170,7 +171,7 @@ export default function PublicProfile() {
           </div>
         )}
 
-        {/* Powered by footer */}
+        {/* Footer */}
         <div className="profile-powered">
           Made with <Link to="/">🔗 LinkHub</Link>
         </div>
