@@ -165,7 +165,7 @@ export default function Landing() {
       {/* ── Footer ── */}
       <footer className="footer">
         <div className="container">
-          <p>© 2025 LinkHub </p>
+          <p>© 2026 LinkHub </p>
         </div>
       </footer>
     </>
