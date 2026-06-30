@@ -64,7 +64,7 @@ export default function Register() {
 
           <div className="form-group">
             <label className="form-label">Email</label>
-            <input name="email" type="email" className="form-input" placeholder="you@example.com" value={form.email} onChange={handleChange} required />
+            <input name="email" type="email" className="form-input" placeholder="xyz@gmail.com" value={form.email} onChange={handleChange} required />
           </div>
 
           <div className="form-group">
